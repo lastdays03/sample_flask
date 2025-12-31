@@ -1,0 +1,43 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 56px;
+    /* Height of fixed navbar */
+    padding-bottom: 60px;
+    /* Height of fixed footer */
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+
+main {
+    /* Reset for Dashboard Layout */
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.button {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #0056b3;
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Error - SMART LOCATION RECOMMENDER{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">오류가 발생했습니다!</h4>
+        <p>{{ error.message }}</p>
+        <hr>
+        <p class="mb-0">Error Code: <strong>{{ error.code }}</strong></p>
+    </div>
+    <a href="{{ url_for('main.index') }}" class="btn btn-primary">홈으로 돌아가기</a>
+</div>
+{% endblock %}
