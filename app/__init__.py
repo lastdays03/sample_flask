@@ -102,6 +102,9 @@ def create_app(config_name="default"):
     
     from app.api.example import api_bp as example_api_blueprint
     api.register_blueprint(example_api_blueprint)
+    
+    from app.api.health import blp as health_blp
+    api.register_blueprint(health_blp)
 
     # 보안 설정 (Flask-Talisman)
     from flask_talisman import Talisman
