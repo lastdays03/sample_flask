@@ -105,7 +105,16 @@ def create_app(config_name="default"):
 
     # 보안 설정 (Flask-Talisman)
     from flask_talisman import Talisman
-    Talisman(app, force_https=not (app.testing or app.debug))
+    
+    csp = {
+        'default-src': "'self'",
+        'style-src': ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "fonts.googleapis.com"],
+        'script-src': ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "use.fontawesome.com", "cdnjs.cloudflare.com"],
+        'font-src': ["'self'", "fonts.gstatic.com", "use.fontawesome.com"],
+        'img-src': ["'self'", "data:"]
+    }
+    
+    Talisman(app, force_https=not (app.testing or app.debug), content_security_policy=csp)
 
     # Rate Limiting (Flask-Limiter)
     from flask_limiter import Limiter
