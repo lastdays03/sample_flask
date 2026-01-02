@@ -51,3 +51,5 @@ htmlcov/
 logs/
 *.log
 
+# Antigravity Agent Settings (Symlink)
+.agent

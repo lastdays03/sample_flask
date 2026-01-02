@@ -19,7 +19,12 @@ python-dotenv==1.0.0
 SQLAlchemy==2.0.45
 typing_extensions==4.15.0
 Werkzeug==3.1.4
-pytest-cov==4.1.0
+pytest-cov
+flask-smorest
+marshmallow==4.1.0
+python-json-logger
+flask-talisman
+flask-limiter
 flake8==6.1.0
 black==23.9.1
 Flask-WTF==1.2.1

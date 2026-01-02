@@ -10,6 +10,19 @@ class Config:
     WTF_CSRF_ENABLED = True  # CSRF 보호 명시적 활성화
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # API Documentation Settings (flask-smorest)
+    API_TITLE = "Antigravity API"
+    API_VERSION = "v1"
+    OPENAPI_VERSION = "3.0.3"
+    OPENAPI_URL_PREFIX = "/api"
+    OPENAPI_SWAGGER_UI_PATH = "/docs"
+    OPENAPI_SWAGGER_UI_URL = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
+
+    # Rate Limiting
+    RATELIMIT_DEFAULT = "200 per day"
+    RATELIMIT_STORAGE_URL = "memory://"
+    RATELIMIT_HEADERS_ENABLED = True
+
     @staticmethod
     def init_app(app):
         """설정별 초기화 메서드.
