@@ -9,17 +9,17 @@
 
 이 애플리케이션은 사용자 관리 및 기본적인 데이터 API 기능을 포함한 **표준 Flask 애플리케이션 템플릿**입니다. 실제 비즈니스 로직보다는 **견고한 프로젝트 구조와 개발 프로세스**에 초점을 맞추고 있습니다.
 
-### 핵심 학습 목표
-1.  **환경 표준화**: `Makefile`, `pyproject.toml` 등을 통한 팀 단위 개발 환경 통일.
-2.  **자동화 워크플로우**: 테스트 자동화, 코드 품질 검사(Lint/Format) 등의 파이프라인 구축.
-3.  **Agent 협업**: AI Agent와 함께 코드를 분석, 리팩토링, 문서화하는 효율적인 작업 방식 연구.
-
+### 주요 기능 (Key Features)
+1.  **사용자 관리**: 회원가입, 로그인, 로그아웃 (Flask-Login, Flask-WTF).
+2.  **데이터 시각화 API**: 자치구별, 건물 용도별, 위치별 예측 데이터 제공 (Bar, Area, Table).
+3.  **환경 표준화**: `Makefile`, `pyproject.toml` 등을 통한 팀 단위 개발 환경 통일.
+4.  **자동화 워크플로우**: 테스트 자동화, 코드 품질 검사(Lint/Format) 등의 파이프라인 구축.
 
 ---
 
 ## 🏗️ 아키텍처 및 구조 (Architecture)
 
-확장성과 유지보수를 위해 기능별로 모듈(Blueprint)을 분리했습니다.
+확장성과 유지보수를 위해 기능별로 모듈(Blueprint)을 분리했습니다. 상세한 아키텍처는 [Architecture Guide](docs/architecture.md)를 참고하세요.
 
 ### 디렉토리 구조
 ```plaintext
@@ -31,14 +31,23 @@ workspace_root/
 │   ├── auth/               # [Blueprint] 인증 모듈 (로그인/가입)
 │   └── main/               # [Blueprint] 메인 화면 및 데이터 API
 ├── tests/                  # 🧪 테스트 코드
-│   ├── conftest.py         # 테스트 공통 설정 (Fixtures)
-│   ├── unit/               # 단위 테스트 (모델, 유틸 등 개별 로직 검증)
-│   └── integration/        # 통합 테스트 (API 엔드포인트 및 흐름 검증)
 ├── configs.py              # ⚙️ 환경별 설정 (Dev, Test, Prod)
 ├── migrations/             # 🗄️ DB 마이그레이션 스크립트
 ├── requirements.txt        # 📦 의존성 패키지 목록
 └── README.md               # 📘 프로젝트 가이드
 ```
+
+### API 요약 (API Summary)
+상세 명세는 [API Reference](docs/api_reference.md)를 참고하세요.
+
+| 모듈 | 메소드 | 엔드포인트 | 설명 |
+|---|---|---|---|
+| **Auth** | POST | `/auth/login` | 사용자 로그인 및 세션 생성 |
+| **Auth** | POST | `/auth/register` | 신규 사용자 등록 |
+| **Auth** | GET | `/auth/logout` | 로그아웃 및 세션 종료 |
+| **Main** | POST | `/district` | 자치구별 변동률 데이터 조회 |
+| **Main** | POST | `/building` | 건물 용도별 평균 가격 조회 |
+| **Main** | POST | `/predict/location` | 위치별 예측 상세 데이터 조회 |
 
 ### 데이터 처리 흐름
 1.  **Request**: 클라이언트(브라우저)가 요청을 보냅니다.
