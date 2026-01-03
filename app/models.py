@@ -34,7 +34,7 @@ class User(UserMixin, db.Model):
         Args:
             password (str): 평문 비밀번호.
         """
-        self.password_hash = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password, method="pbkdf2:sha256")
 
     def verify_password(self, password):
         """비밀번호 검증.
